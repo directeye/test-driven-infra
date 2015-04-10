@@ -2,36 +2,36 @@ box: wercker/ruby
 build:
   steps:
     - script:
-        name: Make $HOME/.ssh directory
+        name: Make $HOME/.ssh directory on wercker
         code: mkdir -p $HOME/.ssh
     - create-file:
-        name: Put SSH public key
+        name: Put SSH public key on wercker
         filename: $HOME/.ssh/id_rsa.pub
         overwrite: true
         content: $DIGITALOCEAN_SSH_KEY_PUBLIC
     - create-file:
-        name: Put SSH private key
+        name: Put SSH private key on wercker
         filename: $HOME/.ssh/id_rsa
         overwrite: true
         hide-from-log: true
         content: $DIGITALOCEAN_SSH_KEY_PRIVATE
     - script:
-        name: Run chmod 0400 $HOME/.ssh/id_rsa
+        name: Run chmod 0400 $HOME/.ssh/id_rsa on wercker
         code: chmod 0400 $HOME/.ssh/id_rsa
     - script:
-        name: install serverspec
+        name: install serverspec on wercker
         code: sudo gem install serverspec --no-ri --no-rdoc
     - script:
-        name: Get vagrant
+        name: Get vagrant on wercker
         code: wget https://dl.bintray.com/mitchellh/vagrant/vagrant_1.7.2_x86_64.deb
     - script:
-        name: Install vagrant
+        name: Install vagrant on wercker
         code: sudo dpkg -i vagrant_1.7.2_x86_64.deb
     - script:
-        name: Run vagrant plugin install
+        name: Run vagrant plugin install on wercker
         code: vagrant plugin install vagrant-digitalocean
     - script:
-        name: Run vagrant up
+        name: Run vagrant up on Digital Ocean
         code: vagrant up --provider=digital_ocean
     - script:
         name: Run rake spec
