@@ -23,7 +23,7 @@ build:
         code: sudo gem install serverspec --no-ri --no-rdoc
     - script:
         name: Get vagrant
-        code: wget https://dl.bintray.com/mitchellh/vagrant/#vagrant_1.7.2_x86_64.deb
+        code: wget https://dl.bintray.com/mitchellh/vagrant/vagrant_1.7.2_x86_64.deb
     - script:
         name: Install vagrant
         code: sudo dpkg -i vagrant_1.7.2_x86_64.deb
